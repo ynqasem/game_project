@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block content %}
+    <h1>The Game {{name}} Page</h1>
+    <form action="{% url 'gameupdate' game_id=instance.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class="btn btn-otline-success" value="Update Game">
+    </form>
+
+{% endblock content %}

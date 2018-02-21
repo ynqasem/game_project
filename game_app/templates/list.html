@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<div class="row">
+        {% for object in games_list %}
+            <div class="col-md-4">
+
+                <div class="card">
+                    {% if object.image %}
+                        <img class="card-img-top" src="{{object.image.url}}" alt="Card image cap">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{object.name}}</h5>
+                        <p class="card-text">Release Date: {{object.release_date}}</p>
+                        <p class="card-text">Platforms: {{object.platforms}}</p>
+                        <p class="card-text">
+                        Multiplayer:
+                        {% if object.multiplayer %}
+                        Multiplayer Available
+                        {% else %}
+                        Single Player Only
+
+                        {% endif %}
+                        </p>
+                        <p class="card-text">
+                            <a href="{% url 'gameupdate' game_id=object.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url 'gamedelete' game_id=object.id %}" class="btn btn-danger">Delete</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+</div>
+{% endblock content %}

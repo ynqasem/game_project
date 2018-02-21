@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <h1>{{instance.name}} <small>{{instance.release_date}}</small></h1>
+        <ul>
+        	<li>{{instance.multiplayer}}</li>
+        	<li>{{instance.image}}</li>
+        	<li>{{instance.platforms}}</li>
+        </ul>
+
+        
+    </div>
+</div>
+{% endblock content %}
